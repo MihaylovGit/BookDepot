@@ -1,15 +1,13 @@
 ﻿namespace BookDepot.Data.Models;
 
 using System.ComponentModel.DataAnnotations;
-using static BookDepot.Data.Validations.DataValidation.Author;
 
-public class Author
+public class Category
 {
     [Key]
     public int Id { get; set; }
 
-    [MaxLength(NameMaxLength)]
-    public string Name { get; set; } = null!;
+    public int BookId { get; set; }
 
     public List<Book> Books { get; set; } = new List<Book>();
 }

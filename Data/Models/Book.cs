@@ -11,6 +11,10 @@ public class Book
     [MaxLength(TitleMaxLength)]
     public string Title { get; set; } = null!;
 
+    public string? ImageUrl { get; set; }
+
+    public int AuthorId { get; set; }
+
     public Author Author { get; set; } = null!;
 
     [MaxLength(DescriptionMaxLength)]
@@ -23,4 +27,10 @@ public class Book
     public string Language { get; set; } = null!;
 
     public string ISBN { get; set; } = null!;
+
+    public decimal Price { get; set; }
+
+    public int CategoryId { get; set; }
+
+    public List<Category> Categories { get; set; } = new List<Category>();
 }

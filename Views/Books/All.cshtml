@@ -1,0 +1,20 @@
+﻿@model BookInListViewModel
+
+@{
+    ViewData["Title"] = "Browse Through All Releases";
+}
+
+@foreach (var book in Model.Books)
+{
+    <div class="card" style="width: 18rem;">
+        <img class="card-img-top" src=@book.ImageUrl alt="Card image cap">
+        <div class="card-body">
+            <h5 class="card-title">@book.Title</h5>
+            <p class="card-text">@book.Author.Name</p>
+            <span class="price">$@book.Price</span>
+            <a href="#" class="btn btn-primary">Details</a>
+        </div>
+    </div>
+}
+
+

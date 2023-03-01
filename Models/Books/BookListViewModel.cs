@@ -1,11 +1,11 @@
-﻿namespace BookDepot.Data.Models;
+﻿namespace BookDepot.Models.Books;
 
+using BookDepot.Data.Models;
 using System.ComponentModel.DataAnnotations;
 using static BookDepot.Data.Validations.DataValidation.Book;
 
-public class Book
+public class BookListViewModel
 {
-    [Key]
     public int Id { get; set; }
 
     [MaxLength(TitleMaxLength)]
@@ -34,7 +34,3 @@ public class Book
 
     public List<Category> Categories { get; set; } = new List<Category>();
 }
-
-
-
-

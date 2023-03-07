@@ -23,7 +23,7 @@ public class ApplicationDbContext : IdentityDbContext
                .HasOne(c => c.Author);
 
         builder.Entity<Book>()
-               .HasMany(c => c.Categories);
+               .HasOne(c => c.Category);
 
         builder.Entity<Author>()
                .HasMany(b => b.Books);

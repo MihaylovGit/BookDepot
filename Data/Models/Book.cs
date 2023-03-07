@@ -26,13 +26,13 @@ public class Book
 
     public string Language { get; set; } = null!;
 
-    public string ISBN { get; set; } = null!;
+    public long ISBN { get; set; }
 
     public decimal Price { get; set; }
 
     public int CategoryId { get; set; }
 
-    public List<Category> Categories { get; set; } = new List<Category>();
+   public Category Category { get; set; } = null!;
 }
 
 

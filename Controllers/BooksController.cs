@@ -1,12 +1,25 @@
 ﻿namespace BookDepot.Controllers;
 
 using BookDepot.Models.Books;
+using BookDepot.Services.Contracts;
 using Microsoft.AspNetCore.Mvc;
 
 public class BooksController : Controller
 {
-    public IActionResult All(BookListViewModel inputModel)
+    private readonly IBooksService booksService;
+
+    public BooksController(IBooksService booksService)
     {
-        return this.View();
+        this.booksService = booksService;
+    }
+
+    public IActionResult All()
+    {
+        var viewModel = new BooksListViewModel()
+        {
+            AllBooks = this.booksService.GetAllBooks()
+        };
+
+        return View(viewModel);
     }
 }

@@ -1,6 +1,7 @@
 ﻿namespace BookDepot.Data.Models;
 
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using static BookDepot.Data.Validations.DataValidation.Book;
 
 public class Book
@@ -20,8 +21,6 @@ public class Book
     [MaxLength(DescriptionMaxLength)]
     public string Description { get; set; } = null!;
 
-    public DateTime PublishedOn { get; set; }
-
     public int Pages { get; set; }
 
     public string Language { get; set; } = null!;
@@ -30,9 +29,7 @@ public class Book
 
     public decimal Price { get; set; }
 
-    public int CategoryId { get; set; }
-
-   public Category Category { get; set; } = null!;
+    public Genre Genre { get; set; }
 }
 
 

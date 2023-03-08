@@ -19,7 +19,7 @@ public class BooksService : IBooksService
     public List<Book> GetAllBooks()
     {
         var allBooks = this.data.Books.OrderByDescending(x => x.Id)
-                                    .ToList();
+                                      .ToList();
 
         return allBooks;
     }

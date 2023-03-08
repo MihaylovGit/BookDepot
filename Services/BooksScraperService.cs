@@ -1,6 +1,7 @@
 ﻿namespace BookDepot.Services
 {
     using AngleSharp;
+    using AngleSharp.Dom;
     using BookDepot.Data;
     using BookDepot.Data.Models;
     using System;
@@ -21,7 +22,7 @@
             this.booksData = booksData;
         }
 
-        public async Task PopulateDbWithAds()
+        public async Task PopulateDbWithBooks()
         {
             var config = Configuration.Default.WithDefaultLoader();
             var address = "https://www.orangecenter.bg/knizharnitsa/hudozhestvena-literatura?product_list_limit=120";
@@ -43,7 +44,7 @@
             var titleElements = document.GetElementsByClassName(titleSelector).Select(x => x.TextContent).ToList();
             var authorElements = document.GetElementsByClassName(authorSelector).Select(x => x.TextContent).ToList();
             var priceElements = document.GetElementsByClassName(priceSelector).Select(x => x.TextContent).ToList();
-            var imageElements = document.GetElementsByClassName(imageSelector).Select(x => x.TextContent).ToList();
+            var imageElements = document.GetElementsByClassName(imageSelector).Attr("src").ToList();
 
             var books = new List<Book>();
 
@@ -59,20 +60,17 @@
                     Name = authorElements[i],
                 };
 
-                var category = new Category
-                {
-                    Genre = Genre.Classics,
-                };
-
                 var currentBook = new Book
                 {
                     Title = titleElements[i],
                     ImageUrl = imageElements[i],
                     Author = author,
+                    Price = priceElements[i][0],
                     Pages = pages++,
                     Language = "Bulgarian",
                     ISBN = isbn++,
-                    Category = category,
+                    Genre = Genre.Fiction,
+                    Description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum"
                 };
 
                 books.Add(currentBook);

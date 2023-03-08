@@ -1,10 +1,10 @@
-﻿@model BookInListViewModel
+﻿@model BooksListViewModel
 
 @{
     ViewData["Title"] = "Browse Through All Releases";
 }
 
-@foreach (var book in Model.Books)
+@foreach (var book in Model.AllBooks)
 {
     <div class="card" style="width: 18rem;">
         <img class="card-img-top" src=@book.ImageUrl alt="Card image cap">

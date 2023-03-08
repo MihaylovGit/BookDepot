@@ -4,6 +4,6 @@
 
     public interface IBooksScraperService
     {
-       Task PopulateDbWithAds();
+       Task PopulateDbWithBooks();
     }
 }
